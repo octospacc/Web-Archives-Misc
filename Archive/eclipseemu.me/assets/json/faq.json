@@ -1,0 +1,84 @@
+{
+  "faq": [
+    {
+      "question": "Q: Sound isn't working. Why is that?",
+      "answer": "A: Some browsers block audio auto-play, such as MobileSafari. This will be fixed in a future update, so please hang tight!"
+    },
+    {
+        "question": "Q: How does saving work in Eclipse, and what systems are supported?",
+        "answer": "A: The systems that support saving are GBA, GBC, and GB. The NES does not support saving. Saving is done like it is on the original console: going into the game menus and using the save function. After using the in-game save function, tap Menu, then Save, then wait a few seconds for Eclipse to save your game progress to your device (thirty [30] seconds is safe enough).<br>A full (unofficial) compatibility list can be found at https://docs.google.com/document/d/1ronmDFH7XWPr359usVspv90G9jLiPA_t9EYHChglTrE/edit."
+    },
+    {
+      "question": "Q: I'm having an issue with controls on iOS. What's going on?",
+      "answer": "A: This is a known bug. Please update iOS to the latest stable version or wait for Eclipse v3."
+    },
+    {
+      "question": "Q: I have never owned a game on the supported platforms. Where do I start?",
+      "answer": "A: Click the \"+\" button, tap on Repos, tap on the Homebrew repo under Featured Repos, and then it will be added as a repo. Tap it, and find a game you like. <br>Using licensed games will require ownership of the original game. Please don't pirate."
+    },
+    {
+      "question": "Q: I want to suggest a feature or report a bug. How do I do so?",
+      "answer": "A: Use the below link, read the attached README, and submit an issue on our GitHub issue tracker: https://github.com/iGBAEmu/EclipseIssues/"
+    },
+    {
+      "question": "Q: I want to make a repo. Where do I start?",
+      "answer": "A: The repo format is documented at the below link: https://gist.github.com/Shugabuga/64cea72c7853f6c610c765f1531eb85a"
+    },
+    {
+      "question": "Q: I am having issues and need to do some self-debugging. How do I do so?",
+      "answer": "A: Eclipse has a built-in debugger as of version 1.0.9. To make it visible, go to Settings and tap on the navbar (with the word \"Settings\") five (5) times to enable Debug Mode. Go into the debugger menu, and various options would be available (such as the ability to create an issue with all important information pre-attached, the states of various settings, and some buttons to force Eclipse to run certain tasks."
+    },
+    {
+      "question": "Q: How do I add custom ROMs?",
+      "answer": "A: You can upload ROMs that are stored locally on-device, on your personal Google Drive, and on your personal Dropbox. Most games will have its box art and name auto-detected."
+    },
+    {
+      "question": "Q: What games are recommended?",
+      "answer": "A: Look through your stuff and find a physical cartridge. If you have none, you are limited to homebrew games for legal reasons. Please don\"t pirate games when using Eclipse."
+    },
+    {
+      "question": "Q: This ROM (added from a link) isn\"t working. Why isn\"t it?",
+      "answer": "A: A good test is to first download the ROM locally and upload it to Eclipse directly. To do this, press the \"+\" button and tap Upload. Select your ROM from your files, and load it with the corresponding button.<br>- If the game is not a Gameboy Advance game and doesn \"t load, the ROM is probably bad or doesn\"t work with Eclipse.<br>- If it is and it doesn \"t, wait for the splash screen (it can take some time).<br>- If you see the splash screen and the Nintendo branding is gone or corrupted, the ROM file is not supported by Eclipse.<br>- If it works perfectly when uploaded, your issue is probably a bad URL.Make sure the URL downloads the ROM when it is visited and doesn \"t display a download button. We recommend that you use Dropbox to store your ROMs, not sites like Google Drive, MediaFire, or MEGA (which are not officially supported)."
+    },
+    {
+      "question": "Q: I made a repo or skin. How do I get it featured inside of Eclipse?",
+      "answer": "A: Please contact me (@HeyItsShuga on Twitter). Please note that no skins or repos that are not appropriate for children under twelve (12) would be featured, as well as repos that contain Nintendo-licensed games."
+    },
+    {
+      "question": "Q: I am uploading a ROM to Eclipse but it isn\"t saved to the main menu. Why?",
+      "answer": "A: This is a technical limitation. iOS\"s MobileSafari (which is what many users use) limit localStorage space to ~50MB, while many games (especially GBA games) can use dozens of megabytes of space."
+    },
+    {
+      "question": "Q: Does Eclipse work offline?",
+      "answer": "A: Eclipse does work offline, but certain features (like repos and your game collection) will be disabled. To use a game offline, you need to upload it under \"+.\""
+    },
+    {
+      "question": "Q: Are save states stored for uploaded ROMs?",
+      "answer": "A: A game\"s save data should be restored when its file is re-uploaded."
+    },
+        {
+      "question": "Q: Is there formal documentation on features like skins, repos, and share URLs?",
+      "answer": "A: Yes, and it can be found at https://eclipseemu.me/docs/."
+    },
+    {
+        "question": "Q: Eclipse is slow for me. Why is that?",
+        "answer": "A: On devices worse than an iPhone 6s (or comparable), Eclipse will be slow, even if emulators like Delta or RetroArch work fine. Since Eclipse is Web-based and web browsers aren\"t as powerful as native applications or programs, performance hiccups are to be expected."
+    },
+    {
+        "question": "Q: What repos are recommended? Where can I find repos?",
+        "answer": "A: Please look through the featured repos in-app."
+    },
+    {
+        "question": "Q: How do I install Eclipse on my home screen (on iOS)? The profile is gone!",
+        "answer": "A: Click the \"View Online\" link, tap the Share button, and tap \"Add to Home Screen.\" This will let you launch Eclipse like an app! Please note that the profile is no longer supported."
+    },
+    {
+        "question": "Q: How do I delete Eclipse? I installed it via the profile and can\"t delete it normally.",
+        "answer": "A: Remove the profile in Settings > General > Profile.<br>We do not allow for home screen removal on the profile due to home screen removals not removing the profile in the progress, leaving it installed after Eclipse is seemingly deleted."
+    },
+    {
+      "question": "Q: Does this work with [platform]?",
+      "answer": "A: Probably. Just go to https://eclipseemu.me/, use the online version, and [platform permitting] add it to your home screen/launcher/desktop.<br>- For desktop platforms, our Electron clients should work.This includes win32, macOS, and GNU-Linux [deb provided]. They include Discord Rich Presence support!<br> - For Android - based OSes, you should be able to add Eclipse to your launcher in Chrome and other browsers.<br> - For iOS, either adding the web version to the home screen or using the profile works.They do the same thing but personally, I prefer adding the web version to the home screen.<br> - For Android / Amazon Fire TV, PS4, and Xbox One, it probably runs but it isn\"t fun to use (controls).<br> - For Apple TV, watchOS, and the * Nintendo Switch, there is currently no support and it will probably not run properly.<br> - For UWP / Microsoft Store, we do not have a client.<br> - For browsers without JavaScript, Eclipse will not work. Ensure JavaScript is enabled and a decent browser (such as Chrome, Safari, or Firefox) are being used."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "faq": [
+    {
+      "question": "What systems can Eclipse play?",
+      "answer": "Eclipse can play games from these systems:\n- Nintendo Entertainment System (NES)\n- Game Boy\n- Game Boy Color\n- Game Boy Advance\n- Super Nintendo (SNES)"
+    },
+    {
+      "question": "Where do I get games?",
+      "answer": "If you don't dump ROMs yourself, you're limited to what you can find in Homebrew. Using websites to download licensed ROMs is illegal, as it is considered a form of piracy."
+    },
+    {
+      "question": "Why won't my DS game work?",
+      "answer": "DS games don't work on Eclipse. Safari (and therefore every iOS browser) doesn't support the necessary features required for good DS emulation."
+    },
+    {
+      "question": "Why isn't my zip file working?",
+      "answer": "Eclipse doesn't support zip files (or any other archive format). You can unzip via the Files app. Here's Apple's guide on how to do that: https://support.apple.com/en-us/HT211132"
+    },
+    {
+      "question": "Sound isn't working. Why is that?",
+      "answer": "Turn on your ringer."
+    },
+    {
+      "question": "Why isn't my game saving, how do I save?",
+      "answer": "Some games do not save, but most do. Only GBA and GB/GBC games save at the moment. Additionally, Eclipse does not do save states (yet), so saves are actual saves. Treat it like it's original hardware:\n1. Save in-game, as you would on actual hardware.\n2. Open Menu, then either press \"Store Saved Game\" or \"Quit\" depending on whether or not you want to keep playing.\n\nSome games/series that don't save include: Harvest Moon, Mega Man Battle Network, Kirby, etc.\n\nWe are migrating to new cores that offer more accurate emulation (and therefore better compatibility), which will be used in the next version of Eclipse (v3.0.0)."
+    },
+    {
+      "question": "Why is my game slow?",
+      "answer": "Eclipse is actually a website, which puts it at a major disadvantage compared to other emulators. We are working on improving the overall efficiency and performance of Eclipse, but for now try to:\n\n1. Turn off low power mode, if you have it on. (it throttles web performance by ~50%)\n2. Running only one game per session.\n3. Don't have background apps open.\n4. Clearing cache (Settings -> Clear Cache).\n5. Be on the latest iOS/browser version."
+    },
+    {
+      "question": "Can I use cheats?",
+      "answer": "Cheats are not available for Eclipse. They will be added in the next major release (v3.0.0)."
+    },
+    {
+      "question": "Can I trade Pokémon?",
+      "answer": "You can't trade Pokémon in Eclipse."
+    },
+    {
+      "question": "Can I use real time clock features?",
+      "answer": "Eclipse doesn't support Real Time Clock (RTC) features. Support will come in the future."
+    },
+    {
+      "question": "Why does my ROM Hack have the same save as the base game/other ROM hack?\n",
+      "answer": "In the current versions of Eclipse, saves are tied to a game's cartridge ID, which ROM hacks don't overwrite. This means that any ROMs that share the same cartridge ID will overwrite each other and may corrupt your game. \n\nWe recommend either:\n- Adding multiple Eclipses to your home screen and playing a hack in a separate Eclipse.\n- Exporting your save every time you switch between hacks (or base game and hack), then importing before playing again. \n"
+    },
+    {
+      "question": "How do I update Eclipse?",
+      "answer": "Eclipse is a website, you don't need to update anything. It happens automatically. That being said, it will get cached locally on your device, so you can play offline. That basically means until the browser decides it's ok to clear cache, Eclipse will not update. You can forcibly clear cache by using (Eclipse) Settings -> Clear Cache, which should update it if there's an update available."
+    },
+    {
+      "question": "Cam I play randomizers?",
+      "answer": "Yeah, they're just normal ROMs with some data rearranged. That being said, if the base game doesn't work in Eclipse, the randomized ROM won't either."
+    },
+    {
+      "question": "Pokemon Radical Red and other ROM hacks don't really work",
+      "answer": "Things like the rock tunnel and double battles are known bugs. Our GBA core, IodineGBA, does not seem to support whatever instructions ROM hacks use for double battles. We are switching all of our cores (except SNES) for better ones in v3.0.0."
+    },
+    {
+      "question": "When will v3.0.0 come out?",
+      "answer": "Eclipse v3.0.0 will come out when it comes out. It's being developed by (effectively) a one man team at the moment. Please be patient."
+    },
+    {
+      "question": "How do I connect a controller?",
+      "answer": "If you are on iOS 14 (or greater), yes, you can use bluetooth controllers in Eclipse. Note: our support of controllers is still in beta, things like analog sticks will not work! Also, your controller needs to be either a MFi, PS4, PS5, Xbox One, or Xbox Series X|S controller (restricted by iOS).\n\nTo setup a controller:\n1. Open Eclipse\n2. Connect the controller to your iOS device (see https://support.apple.com/en-us/HT210414#ios)\n3. Go to Settings and scroll down to controls\n4. You should see your controller listed\n5. Tap on the controller listing\n6. Go through each of the buttons and press a button on your controller to bind it.\n7. Enjoy!"
+    }
+  ]
+}

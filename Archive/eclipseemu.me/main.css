@@ -1,0 +1,108 @@
+html, body {
+  overflow-x: hidden;
+  /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+  background-color: #fff;
+}
+
+.nav-scroller {
+  position: fixed;
+  width: 100%;
+  top: 56px;
+  /* Height of navbar */
+  z-index: 10;
+  height: 2.75rem;
+  overflow-y: hidden;
+  box-shadow: 0 15px 48px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+ion-icon {
+  font-size: 25px;
+  opacity: 0.8;
+  padding-top: 5px;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+a.no-hover:hover {
+  text-decoration: none;
+}
+
+.btn-round {
+  border-radius: 9rem;
+  padding: 0.5rem 2rem !important;
+  font-weight: bold;
+}
+
+.heading {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.jumbotron h1 {
+	font-size: 5rem;
+	font-weight: 800 !important;
+}
+
+.jumbotron p {
+	font-size: 2rem;
+	font-weight: 600 !important;
+	opacity: 0.75;
+	margin-bottom: 1.5rem;
+}
+
+.card {
+	border: 1px solid rgba(141,141,141,0.2) !important;
+	border-radius: 0.75rem;
+	overflow: hidden;
+}
+
+.card .card-body .card-link.text-danger {
+	background-color: #dc3545;
+	color: #fff !important;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	/* margin-bottom: 0.25rem; */
+	display: inline-block;
+	font-weight: 600;
+	margin: auto;
+	margin-top: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.card-body label {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
