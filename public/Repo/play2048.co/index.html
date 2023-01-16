@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang=en>
+	<head>
+		<meta charset=utf-8>
+		<style class=ezcritcss>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				background: #faf8ef;
+				color: #776e65;
+				font-family: clear sans, helvetica neue, Arial, sans-serif;
+				font-size: 18px
+			}
+
+			body {
+				margin-bottom: 80px
+			}
+
+			input {
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px;
+				font: inherit;
+				border: 0;
+				outline: 0;
+				box-sizing: border-box;
+				font-weight: 700;
+				margin: 0;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none
+			}
+
+			.heading:after {
+				content: "";
+				display: block;
+				clear: both
+			}
+
+			h1.title {
+				font-size: 80px;
+				font-weight: 700;
+				margin: 0;
+				display: block;
+				float: left
+			}
+
+			.scores-container {
+				float: right;
+				display: flex
+			}
+
+			.scores-container *+* {
+				margin-left: 5px
+			}
+
+			.score-container,
+			.best-container {
+				position: relative;
+				display: block;
+				background: #bbada0;
+				padding: 15px 25px;
+				font-size: 25px;
+				height: 25px;
+				line-height: 47px;
+				font-weight: 700;
+				border-radius: 3px;
+				color: #fff;
+				margin-top: 8px;
+				text-align: center
+			}
+
+			.score-container:after,
+			.best-container:after {
+				position: absolute;
+				width: 100%;
+				top: 10px;
+				left: 0;
+				text-transform: uppercase;
+				font-size: 13px;
+				line-height: 13px;
+				text-align: center;
+				color: #eee4da
+			}
+
+			.score-container:after {
+				content: "Score"
+			}
+
+			.best-container:after {
+				content: "Best"
+			}
+
+			p {
+				margin-top: 0;
+				margin-bottom: 10px;
+				line-height: 1.65
+			}
+
+			a {
+				color: #776e65;
+				font-weight: 700;
+				text-decoration: underline
+			}
+
+			strong.important {
+				text-transform: uppercase
+			}
+
+			hr {
+				border: 0;
+				border-bottom: 1px solid #d8d4d0;
+				margin-top: 20px;
+				margin-bottom: 30px
+			}
+
+			.container {
+				width: 500px;
+				margin: 0 auto;
+				margin-top: 30px
+			}
+
+			@-webkit-keyframes fade-in {
+				0% {
+					opacity: 0
+				}
+
+				to {
+					opacity: 1
+				}
+			}
+
+			@-moz-keyframes fade-in {
+				0% {
+					opacity: 0
+				}
+
+				to {
+					opacity: 1
+				}
+			}
+
+			@keyframes fade-in {
+				0% {
+					opacity: 0
+				}
+
+				to {
+					opacity: 1
+				}
+			}
+
+			.game-container {
+				margin-top: 40px;
+				position: relative;
+				padding: 15px;
+				-webkit-touch-callout: none;
+				-ms-touch-callout: none;
+				-ms-touch-action: none;
+				touch-action: none;
+				background: #bbada0;
+				border-radius: 6px;
+				width: 500px;
+				height: 500px;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box
+			}
+
+			.game-message {
+				display: none;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background: rgba(238, 228, 218, .73);
+				z-index: 100;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				-webkit-animation: fade-in 800ms ease 1200ms;
+				-moz-animation: fade-in 800ms ease 1200ms;
+				animation: fade-in 800ms ease 1200ms;
+				-webkit-animation-fill-mode: both;
+				-moz-animation-fill-mode: both;
+				animation-fill-mode: both
+			}
+
+			.game-message p {
+				font-size: 60px;
+				font-weight: 700;
+				height: 60px;
+				line-height: 60px
+			}
+
+			.game-message .lower {
+				display: block;
+				margin-top: 29px
+			}
+
+			.game-message a {
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px;
+				margin-left: 9px
+			}
+
+			.game-message a.keep-playing-button {
+				display: none
+			}
+
+			.grid-container {
+				position: absolute;
+				z-index: 1
+			}
+
+			.grid-row {
+				margin-bottom: 15px
+			}
+
+			.grid-row:last-child {
+				margin-bottom: 0
+			}
+
+			.grid-row:after {
+				content: "";
+				display: block;
+				clear: both
+			}
+
+			.grid-cell {
+				width: 106.25px;
+				height: 106.25px;
+				margin-right: 15px;
+				float: left;
+				border-radius: 3px;
+				background: rgba(238, 228, 218, .35)
+			}
+
+			.grid-cell:last-child {
+				margin-right: 0
+			}
+
+			.tile-container {
+				position: absolute;
+				z-index: 2
+			}
+
+			.tile,
+			.tile .tile-inner {
+				width: 107px;
+				height: 107px;
+				line-height: 107px
+			}
+
+			.tile.tile-position-1-3 {
+				-webkit-transform: translate(0, 242px);
+				-moz-transform: translate(0, 242px);
+				-ms-transform: translate(0, 242px);
+				transform: translate(0, 242px)
+			}
+
+			.tile.tile-position-3-3 {
+				-webkit-transform: translate(242px, 242px);
+				-moz-transform: translate(242px, 242px);
+				-ms-transform: translate(242px, 242px);
+				transform: translate(242px, 242px)
+			}
+
+			.tile {
+				position: absolute
+			}
+
+			.tile .tile-inner {
+				border-radius: 3px;
+				background: #eee4da;
+				text-align: center;
+				font-weight: 700;
+				z-index: 10;
+				font-size: 55px
+			}
+
+			.tile.tile-2 .tile-inner {
+				background: #eee4da;
+				box-shadow: 0 0 30px 10px transparent, inset 0 0 0 1px transparent
+			}
+
+			@-webkit-keyframes appear {
+				0% {
+					opacity: 0;
+					-webkit-transform: scale(0);
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					transform: scale(0)
+				}
+
+				to {
+					opacity: 1;
+					-webkit-transform: scale(1);
+					-moz-transform: scale(1);
+					-ms-transform: scale(1);
+					transform: scale(1)
+				}
+			}
+
+			@-moz-keyframes appear {
+				0% {
+					opacity: 0;
+					-webkit-transform: scale(0);
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					transform: scale(0)
+				}
+
+				to {
+					opacity: 1;
+					-webkit-transform: scale(1);
+					-moz-transform: scale(1);
+					-ms-transform: scale(1);
+					transform: scale(1)
+				}
+			}
+
+			@keyframes appear {
+				0% {
+					opacity: 0;
+					-webkit-transform: scale(0);
+					-moz-transform: scale(0);
+					-ms-transform: scale(0);
+					transform: scale(0)
+				}
+
+				to {
+					opacity: 1;
+					-webkit-transform: scale(1);
+					-moz-transform: scale(1);
+					-ms-transform: scale(1);
+					transform: scale(1)
+				}
+			}
+
+			.tile-new .tile-inner {
+				-webkit-animation: appear 200ms ease 100ms;
+				-moz-animation: appear 200ms ease 100ms;
+				animation: appear 200ms ease 100ms;
+				-webkit-animation-fill-mode: backwards;
+				-moz-animation-fill-mode: backwards;
+				animation-fill-mode: backwards
+			}
+
+			.above-game {
+				display: flex;
+				justify-content: space-between;
+				align-items: center
+			}
+
+			.game-intro {
+				line-height: 1.2;
+				margin-bottom: 0;
+				margin-right: 10px
+			}
+
+			.how-to-play-link {
+				display: inline-block
+			}
+
+			.restart-button {
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px;
+				display: block;
+				text-align: center;
+				flex-shrink: 0
+			}
+
+			.game-explanation {
+				display: block;
+				margin-top: 30px;
+				border-radius: 1px
+			}
+
+			.game-explanation-touch {
+				display: none
+			}
+
+			@media(hover:none) {
+				.game-explanation-touch {
+					display: inline
+				}
+
+				.game-explanation-mouse {
+					display: none
+				}
+			}
+
+			.sharing {
+				margin-top: 20px;
+				text-align: center
+			}
+
+			.sharing>span,
+			.sharing>form {
+				display: inline-block;
+				vertical-align: middle
+			}
+
+			@media screen and (max-width:520px) {
+
+				html,
+				body {
+					font-size: 15px
+				}
+
+				body {
+					margin-top: 0;
+					padding: 20px
+				}
+
+				h1.title {
+					font-size: 27px;
+					margin-top: 15px
+				}
+
+				.container {
+					width: 100%;
+					max-width: 320px;
+					margin: 0 auto
+				}
+
+				.container:first-child {
+					margin-top: auto
+				}
+
+				.game-container {
+					margin: 0 auto
+				}
+
+				.score-container,
+				.best-container {
+					margin-top: 0;
+					padding: 15px 10px;
+					min-width: 40px
+				}
+
+				.heading {
+					margin-bottom: 10px
+				}
+
+				.game-intro {
+					display: block;
+					box-sizing: border-box;
+					line-height: 1.65
+				}
+
+				.restart-button {
+					padding: 0 8px;
+					height: 32px;
+					line-height: 35px;
+					display: block;
+					box-sizing: border-box;
+					margin-top: 2px
+				}
+
+				.game-container {
+					margin-top: 17px;
+					position: relative;
+					padding: 10px;
+					-webkit-touch-callout: none;
+					-ms-touch-callout: none;
+					-ms-touch-action: none;
+					touch-action: none;
+					background: #bbada0;
+					border-radius: 6px;
+					width: 280px;
+					height: 280px;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					box-sizing: border-box
+				}
+
+				.game-message {
+					display: none;
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background: rgba(238, 228, 218, .73);
+					z-index: 100;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					-webkit-animation: fade-in 800ms ease 1200ms;
+					-moz-animation: fade-in 800ms ease 1200ms;
+					animation: fade-in 800ms ease 1200ms;
+					-webkit-animation-fill-mode: both;
+					-moz-animation-fill-mode: both;
+					animation-fill-mode: both
+				}
+
+				.game-message p {
+					font-size: 60px;
+					font-weight: 700;
+					height: 60px;
+					line-height: 60px
+				}
+
+				.game-message .lower {
+					display: block;
+					margin-top: 29px
+				}
+
+				.game-message a {
+					display: inline-block;
+					background: #8f7a66;
+					border-radius: 3px;
+					padding: 0 20px;
+					text-decoration: none;
+					color: #f9f6f2;
+					height: 40px;
+					line-height: 42px;
+					margin-left: 9px
+				}
+
+				.game-message a.keep-playing-button {
+					display: none
+				}
+
+				.grid-container {
+					position: absolute;
+					z-index: 1
+				}
+
+				.grid-row {
+					margin-bottom: 10px
+				}
+
+				.grid-row:last-child {
+					margin-bottom: 0
+				}
+
+				.grid-row:after {
+					content: "";
+					display: block;
+					clear: both
+				}
+
+				.grid-cell {
+					width: 57.5px;
+					height: 57.5px;
+					margin-right: 10px;
+					float: left;
+					border-radius: 3px;
+					background: rgba(238, 228, 218, .35)
+				}
+
+				.grid-cell:last-child {
+					margin-right: 0
+				}
+
+				.tile-container {
+					position: absolute;
+					z-index: 2
+				}
+
+				.tile,
+				.tile .tile-inner {
+					width: 58px;
+					height: 58px;
+					line-height: 58px
+				}
+
+				.tile.tile-position-1-3 {
+					-webkit-transform: translate(0, 135px);
+					-moz-transform: translate(0, 135px);
+					-ms-transform: translate(0, 135px);
+					transform: translate(0, 135px)
+				}
+
+				.tile.tile-position-3-3 {
+					-webkit-transform: translate(135px, 135px);
+					-moz-transform: translate(135px, 135px);
+					-ms-transform: translate(135px, 135px);
+					transform: translate(135px, 135px)
+				}
+
+				.tile .tile-inner {
+					font-size: 35px
+				}
+
+				.game-message p {
+					font-size: 30px !important;
+					height: 30px !important;
+					line-height: 30px !important
+				}
+
+				.game-message .lower {
+					margin-top: 10px !important
+				}
+
+				.sharing>span,
+				.sharing>form {
+					display: block;
+					margin: 0 auto;
+					margin-bottom: 20px
+				}
+			}
+
+			.pp-donate button {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				border: 0;
+				font: inherit;
+				color: inherit;
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px
+			}
+
+			.pp-donate button img {
+				vertical-align: -4px;
+				margin-right: 8px
+			}
+
+			.btc-donate {
+				position: relative;
+				margin-left: 10px;
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px
+			}
+
+			.btc-donate img {
+				vertical-align: -4px;
+				margin-right: 8px
+			}
+
+			.btc-donate a {
+				color: #f9f6f2;
+				text-decoration: none;
+				font-weight: 400
+			}
+
+			.btc-donate .address {
+				position: absolute;
+				width: 340px;
+				right: 50%;
+				margin-right: -170px;
+				padding-bottom: 7px;
+				top: -30px;
+				opacity: 0
+			}
+
+			.btc-donate .address:after {
+				position: absolute;
+				border-top: 10px solid #bbada0;
+				border-right: 7px solid transparent;
+				border-left: 7px solid transparent;
+				content: "";
+				bottom: 0;
+				left: 50%;
+				margin-left: -7px
+			}
+
+			.btc-donate .address code {
+				background-color: #bbada0;
+				padding: 10px 15px;
+				width: 100%;
+				border-radius: 3px;
+				line-height: 1;
+				font-weight: 400;
+				font-size: 15px;
+				font-family: Consolas, liberation mono, Courier, monospace;
+				text-align: center
+			}
+
+			@media screen and (max-width:520px) {
+				.btc-donate {
+					width: 120px
+				}
+
+				.btc-donate .address {
+					margin-right: -150px;
+					width: 300px
+				}
+
+				.btc-donate .address code {
+					font-size: 13px
+				}
+
+				.btc-donate .address:after {
+					left: 50%;
+					bottom: 2px
+				}
+			}
+
+			.links {
+				text-align: center;
+				margin-top: 20px
+			}
+
+			.links a {
+				display: inline-block
+			}
+
+			.sidebar {
+				width: 180px;
+				top: 0;
+				bottom: 0;
+				position: fixed;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center
+			}
+
+			.sidebar-left {
+				left: 0
+			}
+
+			.sidebar-right {
+				right: 0
+			}
+
+			@media(max-width:1060px) {
+				.sidebar.sidebar-left {
+					display: none
+				}
+			}
+
+			@media(max-width:880px) {
+				.sidebar {
+					display: none
+				}
+			}
+
+			.under-board-container {
+				width: 100%;
+				height: 0;
+				max-height: 0
+			}
+
+			@media(max-width:880px) {
+				.under-board-container {
+					height: auto !important;
+					max-height: none !important;
+					display: block;
+					margin-top: 38px
+				}
+			}
+
+			.cookie-notice {
+				display: none !important;
+				position: fixed;
+				font-size: 15px;
+				z-index: 999999;
+				right: 20px;
+				bottom: 20px;
+				width: 20%;
+				min-width: 460px;
+				background: #e8e5db;
+				padding: 10px;
+				margin-top: 30px;
+				box-sizing: border-box;
+				border-radius: 3px;
+				display: flex;
+				align-items: center;
+				justify-content: center
+			}
+
+			@media screen and (max-width:520px) {
+				.cookie-notice {
+					width: auto;
+					left: 20px;
+					min-width: auto
+				}
+			}
+
+			.cookie-notice,
+			.cookie-notice p a {
+				color: #a09488
+			}
+
+			.cookie-notice p {
+				margin-bottom: 0;
+				flex: 1
+			}
+
+			.cookie-notice,
+			.cookie-notice p {
+				line-height: 20px
+			}
+
+			.cookie-notice-dismiss-button {
+				display: inline-block;
+				background: #8f7a66;
+				border-radius: 3px;
+				padding: 0 20px;
+				text-decoration: none;
+				color: #f9f6f2;
+				height: 40px;
+				line-height: 42px;
+				flex: none;
+				margin-left: 20px
+			}
+
+			.ezmob-footer {
+				background-color: #e8e5db !important;
+				border: 0 !important
+			}
+
+			.start-playing-link {
+				margin-right: 15px
+			}
+
+			.feedback-button {
+				float: right
+			}
+
+			@media screen and (min-width:520px) {
+				.feedback-button {
+					float: none;
+					position: fixed;
+					top: 0;
+					right: 0;
+					font-size: 13px;
+					text-decoration: none;
+					padding: 2px 0;
+					background-color: #8f7a66;
+					color: #f9f6f2;
+					border-bottom-left-radius: 4px;
+					transform-origin: left bottom;
+					width: 122px;
+					text-align: center;
+					opacity: .4;
+					z-index: 1
+				}
+			}
+		</style>
+		<title>2048</title>
+		<meta name=description content="Join the numbers and get to the 2048 tile!">
+		<link rel=preload as=script href="dist/index.js">
+		<link rel=preload href="style/fonts/ClearSans-Regular-webfont.woff" as=font type=font/woff>
+		<link rel=preload href="style/fonts/ClearSans-Bold-webfont.woff" as=font type=font/woff>
+		<link href="style/fonts/clear-sans.css" rel=preload as=style onload="this.onload=null;this.rel='stylesheet'"><noscript>
+			<link href="style/fonts/clear-sans.css?ff=1&amp;wps=false" rel=stylesheet>
+		</noscript>
+		<link href="style/main.css" rel=preload as=style onload="this.onload=null;this.rel='stylesheet'"><noscript>
+			<link href="style/main.css?ff=1&amp;wps=false" rel=stylesheet>
+		</noscript>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel=apple-touch-icon href="meta/apple-touch-icon.png">
+		<link rel=apple-touch-startup-image href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+		<link rel=apple-touch-startup-image href="meta/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+		<meta name=apple-mobile-web-app-capable content="yes">
+		<meta name=apple-mobile-web-app-status-bar-style content="black">
+		<meta name=HandheldFriendly content="True">
+		<meta name=MobileOptimized content="320">
+		<meta name=viewport content="width=device-width,target-densitydpi=160dpi,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+		<meta name=format-detection content="telephone=no">
+		<meta property="og:title" content="2048">
+		<meta property="og:site_name" content="2048">
+		<meta property="og:description" content="Join the numbers and get to the 2048 tile! Careful: this game is extremely addictive!">
+		<meta property="og:image" content="http://gabrielecirulli.github.io/2048/meta/og_image.png">
+		<meta name=twitter:card content="app">
+		<meta name=twitter:site content="@gabrielecirulli">
+		<meta name=twitter:title content="2048">
+		<meta name=twitter:description content="Join the numbers and get to the 2048 tile! Careful: this game is extremely addictive!">
+		<meta name=twitter:image content="http://gabrielecirulli.github.io/2048/meta/og_image.png">
+		<meta name=twitter:url content="http://gabrielecirulli.github.io/2048/">
+		<meta name=twitter:app:country content="US">
+		<meta name=twitter:app:name:iphone content="2048">
+		<meta name=twitter:app:id:iphone content="868076805">
+		<meta name=twitter:app:url:iphone content="https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805">
+		<meta name=twitter:app:name:ipad content="2048">
+		<meta name=twitter:app:id:ipad content="868076805">
+		<meta name=twitter:app:url:ipad content="https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805">
+		<meta name=twitter:app:name:googleplay content="2048">
+		<meta name=twitter:app:id:googleplay content="com.gabrielecirulli.app2048">
+		<meta name=twitter:app:url:googleplay content="https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048">
+		<style id=ezoicCSS>
+			.ezoic-at-0 {
+				padding: 0;
+				float: none !important;
+				min-height: 600px;
+				max-width: 100% !important;
+				line-height: 0;
+				margin-right: auto !important;
+				min-width: 160px;
+				margin-left: auto !important;
+				margin-top: 30px !important
+			}
+
+			.ezoic-ad.medrectangle-2139 {
+				display: inline-block;
+				min-width: 728px;
+				min-height: 90px;
+				max-width: 100% !important;
+				line-height: 0;
+				padding: 0;
+				float: none !important
+			}
+
+			.ezoic-ad.box-4147 {
+				margin-bottom: 0 !important;
+				display: block !important;
+				min-width: 300px;
+				min-height: 250px;
+				text-align: center !important
+			}
+
+			.ezoic-ad.banner-2138 {
+				margin-bottom: 30px !important;
+				display: block !important;
+				text-align: center !important
+			}
+
+			.ezoic-ad.box-1145 {
+				display: inline-block;
+				margin-left: 0 !important;
+				margin-top: 15px !important;
+				margin-right: 0 !important;
+				margin-bottom: 15px !important
+			}
+
+			.ezoic-ad {
+				display: inline-block;
+				border: 0
+			}
+
+			.ezoic-ad>div>iframe {
+				margin: 0 !important;
+				padding: 0 !important
+			}
+
+			.ezmob-footer {
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background: #fff;
+				z-index: 100000;
+				line-height: 0
+			}
+
+			.ezmob-footer-desktop {
+				background-color: #fffc;
+				border-top: 1px solid #d3d3d3;
+				padding-top: 5px
+			}
+
+			.ezmob-footer-close {
+				cursor: pointer;
+				color: #b2b2b2;
+				border: 1px solid #b2b2b2;
+				border-radius: 20px;
+				background: #fff;
+				line-height: 20px;
+				display: inline-block;
+				font-size: 20px;
+				font-family: arial, sans-serif;
+				padding: 0 5px;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				height: 24px;
+				width: 21px;
+				text-align: center
+			}
+
+			body {
+				padding-bottom: 100px !important;
+				height: auto
+			}
+		</style>
+		<link rel=canonical href="index.html">
+		<base href="">
+	</head>
+	<body>
+		<div class=container>
+			<div class=heading>
+				<h1 class=title>2048</h1>
+				<div class=scores-container>
+					<div class=score-container>0</div>
+					<div class=best-container>0</div>
+				</div>
+			</div>
+			<div class=above-game>
+				<p class=game-intro>Join the tiles, get to <strong>2048!</strong><br><a href=javascript:void(0) class=how-to-play-link>How to play →</a></p><a class=restart-button>New Game</a>
+			</div>
+			<div class=game-container>
+				<div class=game-message>
+					<p>
+					<div class=lower><a class=keep-playing-button>Keep going</a><a class=retry-button>Try again</a></div>
+				</div>
+				<div class=grid-container>
+					<div class=grid-row>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+					</div>
+					<div class=grid-row>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+					</div>
+					<div class=grid-row>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+					</div>
+					<div class=grid-row>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+						<div class=grid-cell></div>
+					</div>
+				</div>
+				<div class=tile-container></div>
+			</div>
+			<div class=under-board-container></div>
+			<div class=game-explanation-container>
+				<p class=game-explanation><strong class=important>How to play:</strong><span class=game-explanation-mouse>Use your <strong>arrow keys</strong></span><span class=game-explanation-touch>Swipe with <strong>your fingers</strong></span> to move the tiles. Tiles with the same number <strong>merge into one</strong> when they touch. Add them up to reach <strong>2048!</strong><br><a href=javascript:void(0) class=start-playing-link>Start playing →</a><a class=feedback-button href="mailto:me+f@gabrielecirulli.com?body=Please%20add%20the%20%F0%9F%8D%95%20emoji%20to%20the%20subject%20to%20help%20me%20sort%20legitimate%20email%20from%20spam." target=_blank rel="noopener noreferrer">Send Feedback</a>
+			</div><span id=ezoic-pub-ad-placeholder-136 class=ezoic-adpicker-ad></span>
+			<hr>
+			<p>You’re playing the <strong>original version of 2048.</strong> Try out the official apps for <a href=https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805 target=_blank>iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048" target=_blank>Android!</a> All other versions of this game are derivatives and should be used with caution.</p><span id=ezoic-pub-ad-placeholder-137 class=ezoic-adpicker-ad></span>
+			<hr>
+			<p>Created by <a href=http://gabrielecirulli.com target=_blank>Gabriele Cirulli.</a> Based on <a href=https://itunes.apple.com/us/app/1024!/id823499224 target=_blank>1024 by Veewo Studio.</a>
+			<div class=sharing>
+				<form class=pp-donate action=https://www.paypal.com/cgi-bin/webscr method=post target=_blank><input type=hidden name=cmd value=_s-xclick><input type=hidden name=hosted_button_id value=NVNPJLTBZ8AME><button name=submit><img src="meta/icon_pp.svg" width=20 height=20>Donate</button></form><span class=btc-donate><a href=bitcoin:1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i><img src="meta/icon_bitcoin.svg" width=20 height=20>Donate BTC</a><span class=address><code>1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i</code></span></span>
+			</div>
+			<footer class=links><a href=https://poki.com/en/g/2048 target=_blank rel="noopener noreferrer">Play 2048 on Poki</a></footer>
+		</div>
+		<script src="dist/index.js"></script>
+	</body>
+</html>
