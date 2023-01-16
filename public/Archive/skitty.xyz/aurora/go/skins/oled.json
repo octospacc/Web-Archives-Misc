@@ -1,0 +1,23 @@
+{
+  "name": "OLED",
+  "description": "True black for the iPhone X.",
+  "logo": "assets/img/oled.png",
+  "author": "Skitty",
+  "styles": [
+    {
+      "navbar": "background-color:#000; color:#fff;",
+      "header": "background-color:#000!important; color:#fff;",
+      "label": "background-color:#000; color:#fff;",
+      "containerBackground": "background-color:#000; color:#fff;",
+      "cell": "background-color:#000; color:#fff;",
+      "searchbar": "background-color:#333!important;",
+      "hairlines": "background-color:#000;",
+      "emulatorBackground": "background:#000;",
+      "aBtn": "color:#000;",
+      "bBtn": "color:#000;",
+      "startBtn": "color:#000;",
+      "select": "color:#000;",
+      "menu": "color:#000;"
+    }
+  ]
+}

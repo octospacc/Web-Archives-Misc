@@ -1,0 +1,27 @@
+{
+  "name": "Retro",
+  "logo": "assets/img/retro.png",
+  "author": "Skitty",
+  "description": "Retro (Orangish) Colors.",
+  "styles": [
+    {
+      "navbar": "background:#e7672a; color:#fff;",
+      "header": "background:#e7672a!important; color:#fff;",
+      "containerBackground": "background-color:#f2e8cb; color:#ada58f;",
+      "hairlines": "background-color:#f2e8cb;",
+      "searchbar": "background-color:#fff7e1!important;",
+      "cell": "background:#fff7e1;",
+      "cellChevron": "color:#ada58f!important;",
+      "cellGroupTitle": "color:#ada58f!important;",
+      "label": "color:#000;",
+      "tint": "color:#fff;",
+      "iOSicon": "color:#fff;",
+      "emulatorBackground": "background:#e7672a!important;",
+      "aBtn": "color:#e7672a;",
+      "bBtn": "color:#e7672a;",
+      "startBtn": "color:#e7672a;",
+      "select": "color:#e7672a;",
+      "menu": "color:#e7672a;"
+    }
+  ]
+}

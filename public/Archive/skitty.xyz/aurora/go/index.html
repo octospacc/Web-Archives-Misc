@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+    <title>Aurora</title>
+    <link rel="stylesheet" href="assets/css/f7.css">
+    <link rel="stylesheet" href="assets/css/f7-icons.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/skins.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123344381-1"></script>
+    <!-- Google Analyctics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-123344381-1');
+    </script>
+  </head>
+  <body class="theme-light">
+    
+    <div id="app">
+      <div class="statusbar"></div>
+      
+      <!-- First Launch Popup 
+      <div class="popup popup-tablet-fullscreen first-screen">
+        <div class="view">
+          <div class="page">
+            <div class="page-content">
+              
+              <div class="title">Welcome to<br>Aurora</div>
+              <div class="block">
+                <center>
+                  <p>Aurora</p>
+                </center>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+      
+      <!-- Upload ROM Popup -->
+      <div class="popup popup-tablet-fullscreen upload-rom">
+        <div class="view">
+          <div class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                 <div class="left"><a href="#" class="link popup-close">Close</a></div>
+                 <div class="title">Upload ROM</div>
+               </div>
+             </div>
+            <div class="page-content">
+             
+              
+              <div class="block">
+                <input id="localROM" type="file" accept=".nes">
+                <p>Uploading a ROM will not store it in your library. You must reupload each time you wish to play it.<p>
+                <a href="#" onclick="loadLocalROM();" class="button button-fill">Load</a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- NES Emulator Popup -->
+      <div class="popup popup-tablet-fullscreen nes-emu">
+        <div class="view">
+          <div class="page">
+            <div class="page-content">
+              
+              <div id="nes-emulator"></div>
+              
+              <div class="emu-controls">
+                <div class="bg"></div>
+                <div class="bar">AURORA NES</div>
+                
+                <div class="d-pad" id="d-pad">
+                <div class="d-up" id="up"></div>
+                <div class="d-left" id="left"></div>
+                <div class="d-right" id="right"></div>
+                <div class="d-down" id="down"></div>
+                </div>
+                <div class="ab">
+                <div class="a" id="aBtn">A</div>
+                <div class="b" id="bBtn">B</div>
+                </div>
+                <div class="menu" onclick="nes.stop();nesMenu.open();" id="menu">MENU</div>
+                <div class="start" id="startbtn">START</div>
+                <div class="select" id="select">SELECT</div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SMS Emulator Popup -->
+      <div class="popup popup-tablet-fullscreen sms-emu">
+        <div class="view">
+          <div class="page">
+            <div class="page-content">
+              
+              <div id="sms-emulator"></div>
+              
+              <div class="emu-controls">
+                <div class="bg"></div>
+                <div class="bar">AURORA SMS</div>
+                
+                <div class="d-pad" id="d-pad">
+                <div class="d-up" id="up"></div>
+                <div class="d-left" id="left"></div>
+                <div class="d-right" id="right"></div>
+                <div class="d-down" id="down"></div>
+                </div>
+                
+                <div class="ab">
+                <div class="a" id="aBtn">A</div>
+                <div class="b" id="bBtn">B</div>
+                </div>
+                
+                <div class="start" onclick="sms.stop();smsMenu.open();" id="menu">MENU</div>
+                <div class="select" id="select">START</div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- GBC Emulator Popup -->
+      <div class="popup popup-tablet-fullscreen gbc-emu">
+        <div class="view">
+          <div class="page">
+            <div class="page-content">
+              
+              <div id="gbc-emulator">
+                <canvas class="gbc-canvas" id="screen" width="320" height="288"></canvas>
+              </div>
+              
+              <div class="emu-controls">
+                <div class="bg"></div>
+                <div class="bar">AURORA GBC</div>
+                
+                <div class="d-pad" id="d-pad">
+                <div class="d-up" id="up"></div>
+                <div class="d-left" id="left"></div>
+                <div class="d-right" id="right"></div>
+                <div class="d-down" id="down"></div>
+                </div>
+                <div class="ab">
+                <div class="a" id="aBtn">A</div>
+                <div class="b" id="bBtn">B</div>
+                </div>
+                <div class="menu" onclick="gbc.paused=true;gbcMenu.open();" id="menu">MENU</div>
+                <div class="start" id="startbtn">START</div>
+                <div class="select" id="select">SELECT</div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <!-- Home Page -->
+      <div class="view view-main view-init" data-url="/">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left"><a href="/settings/" class="link icon-only"><i class="icon f7-icons">settings</i></a></div>
+              <div class="title" onclick="location.reload();">Library</div>
+              <div class="right">
+                <a class="link icon-only" onclick="addMenu.open();"><i class="icon f7-icons">add</i></a>
+              </div>
+              <div class="subnavbar">
+                <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-init">
+                  <div class="searchbar-inner">
+                    <div class="searchbar-input-wrap">
+                      <input type="search" placeholder="Search"/>
+                      <i class="searchbar-icon"></i>
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            
+            <div class="list simple-list searchbar-not-found">
+              <ul>
+                <li>Nothing found</li>
+              </ul>
+            </div>
+            
+            <div class="search-list searchbar-found">
+              <ul class="block rom-list">
+                <div class="row library"></div>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="assets/js/f7.js"></script>
+    <script type="text/javascript" src="assets/js/jq.js"></script>
+    <script type="text/javascript" src="assets/js/inb.js"></script>
+    <script>var openskin = "aurora"</script>
+    <script type="text/javascript" src="assets/js/openskin.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/roms.js"></script>
+    <script type="text/javascript" src="assets/js/skins.js"></script>
+    <script type="text/javascript" src="assets/js/sources.js"></script>
+    <script type="text/javascript" src="assets/js/buttons.js" defer></script>
+    <script type="text/javascript" src="assets/js/cheats.js"></script>
+    
+    <script src="assets/js/cores/nes/dynamicaudio.js" type="text/javascript"></script>
+    <script src="assets/js/cores/nes/nes.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/cpu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/keyboard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/mappers.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/papu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/ppu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/gg.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/rom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/cores/nes/ui.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="assets/js/cores/sms/alec.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="assets/js/cores/gbc/amebo.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+    var nes, sms, gbc;
+    $(function() {
+      nes = new JSNES({
+        'ui': $('#nes-emulator').JSNESUI({
+          "Games": [
+            ['Super Mario Bros. 3', 'roms/supermario3.nes']
+          ]
+        })
+      })
+      sms = new JSSMS({
+        'ui': $("#sms-emulator").JSSMSUI({
+          "Games":[
+            ["Sonic The Hedgehog", "roms/sms/sonic1.sms"]
+          ]
+        })
+      })
+      gbc = new gb(null, document.querySelector('.gbc-canvas'));
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Default",
+  "logo": "assets/img/icon.png",
+  "author": "Skitty",
+  "description": "Default iOS UI.",
+  "styles": [
+    {}
+  ]
+}

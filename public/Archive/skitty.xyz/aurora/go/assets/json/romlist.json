@@ -1,0 +1,179 @@
+{
+  "name": "Default",
+  "author": "Aurora",
+  "nes": [
+    {
+      "name": "Contra",
+      "icon": "assets/img/games/nes/contra.png",
+      "link": "roms/nes/contra.nes"
+    },
+    {
+      "name": "Donkey Kong",
+      "icon": "assets/img/games/nes/donkey.png",
+      "link": "roms/nes/donkey.nes"
+    },
+    {
+      "name": "Dr. Mario",
+      "icon": "assets/img/games/nes/drmario.png",
+      "link": "roms/nes/drmario.nes"
+    },
+    {
+      "name": "Excitebike",
+      "icon": "assets/img/games/nes/excitebike.png",
+      "link": "roms/nes/excitebike.nes"
+    },
+    {
+      "name": "Kirbys Adventure",
+      "icon": "assets/img/games/nes/kirbyadventure.png",
+      "link": "roms/nes/kirbyadventure.nes"
+    },
+    {
+      "name": "The Legend of Zelda",
+      "icon": "assets/img/games/nes/zelda.png",
+      "link": "roms/nes/zelda.nes"
+    },
+    {
+      "name": "Mario Bros.",
+      "icon": "assets/img/games/nes/mario.png",
+      "link": "roms/nes/mario.nes"
+    },
+    {
+      "name": "Mega Man",
+      "icon": "assets/img/games/nes/megaman.png",
+      "link": "roms/nes/megaman.nes"
+    },
+    {
+      "name": "Metal Gear",
+      "icon": "assets/img/games/nes/metalgear.png",
+      "link": "roms/nes/metalgear.nes"
+    },
+    {
+      "name": "Metroid",
+      "icon": "assets/img/games/nes/metroid.png",
+      "link": "roms/nes/metroid.nes"
+    },
+    {
+      "name": "Super Mario Bros.",
+      "icon": "assets/img/games/nes/supermario.png",
+      "link": "roms/nes/supermario.nes"
+    },
+    {
+      "name": "Super Mario Bros. 2",
+      "icon": "assets/img/games/nes/supermario2.png",
+      "link": "roms/nes/supermario2.nes"
+    },
+    {
+      "name": "Super Mario Bros. 3",
+      "icon": "assets/img/games/nes/supermario3.png",
+      "link": "roms/nes/supermario3.nes"
+    },
+    {
+      "name": "Zelda II: The Adventure of Link",
+      "icon": "assets/img/games/nes/zelda2.png",
+      "link": "roms/nes/zelda2.nes"
+    }
+  ],
+  "gbc": [
+    {
+      "name": "Pokémon Yellow",
+      "icon": "assets/img/games/gbc/yellow.png",
+      "link": "roms/gbc/yellow.gbc"
+    },
+    {
+      "name": "Pokémon Crystal",
+      "icon": "assets/img/games/gbc/crystal.png",
+      "link": "roms/gbc/crystal.gbc"
+    },
+    {
+      "name": "Pokémon Silver",
+      "icon": "assets/img/games/gbc/silver.png",
+      "link": "roms/gbc/silver.gbc"
+    },
+    {
+      "name": "Pokémon Gold",
+      "icon": "assets/img/games/gbc/gold.png",
+      "link": "roms/gbc/gold.gbc"
+    }
+  ],
+  "gb": [
+    {
+      "name": "Pokémon Red",
+      "icon": "assets/img/games/gb/red.png",
+      "link": "roms/gb/red.gb"
+    },
+    {
+      "name": "Pokémon Blue",
+      "icon": "assets/img/games/gb/blue.png",
+      "link": "roms/gb/blue.gb"
+    },
+    {
+      "name": "Tetris",
+      "icon": "assets/img/games/gb/tetris.png",
+      "link": "roms/gb/tetris.gb"
+    },
+    {
+      "name": "Kirbys Dream Land",
+      "icon": "assets/img/games/gb/dreamland.png",
+      "link": "roms/gb/dreamland.gb"
+    },
+    {
+      "name": "Super Mario Land",
+      "icon": "assets/img/games/gb/marioland.png",
+      "link": "roms/gb/marioland.gb"
+    }
+  ],
+  "sms": [
+    {
+      "name": "Sonic The Hedgehog",
+      "icon": "assets/img/games/sms/sonic1.png",
+      "link": "roms/sms/sonic1.sms"
+    },
+    {
+      "name": "Sonic The Hedgehog 2",
+      "icon": "assets/img/games/sms/sonic2.png",
+      "link": "roms/sms/sonic2.sms"
+    },
+    {
+      "name": "Sonic Chaos",
+      "icon": "assets/img/games/sms/chaos.png",
+      "link": "roms/sms/chaos.sms"
+    },
+    {
+      "name": "Wonder Boy III",
+      "icon": "assets/img/games/sms/wonder.png",
+      "link": "roms/sms/wonder.sms"
+    }
+  ],
+  "gg": [
+    {
+      "name": "Sonic The Hedgehog",
+      "icon": "assets/img/games/gg/sonic1.png",
+      "link": "roms/gg/sonic1.gg"
+    },
+    {
+      "name": "Sonic The Hedgehog 2",
+      "icon": "assets/img/games/gg/sonic2.png",
+      "link": "roms/gg/sonic2.gg"
+    },
+    {
+      "name": "Sonic Chaos",
+      "icon": "assets/img/games/gg/chaos.png",
+      "link": "roms/gg/chaos.gg"
+    },
+    {
+      "name": "Land Of Illusion",
+      "icon": "assets/img/games/gg/illusion.png",
+      "link": "roms/gg/illusion.gg"
+    },
+    {
+      "name": "Dragon Crystal",
+      "icon": "assets/img/games/gg/crystal.png",
+      "link": "roms/gg/crystal.gg"
+    },
+    {
+      "name": "Mean Bean Machine",
+      "icon": "assets/img/games/gg/bean.png",
+      "link": "roms/gg/bean.gg"
+    }
+  ]
+}

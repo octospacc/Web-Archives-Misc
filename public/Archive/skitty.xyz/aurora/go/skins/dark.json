@@ -1,0 +1,22 @@
+{
+  "name": "Dark Mode",
+  "description": "Dark iOS UI.",
+  "logo": "assets/img/dark.png",
+  "author": "Skitty",
+  "styles": [
+    {
+      "navbar": "background-color:#1c1c1c; color:#fff;",
+      "header": "background-color:#1c1c1c!important; color:#fff;",
+      "label": "color:#fff;",
+      "containerBackground": "background-color:#171717; color:#fff;",
+      "cell": "background-color:#1c1c1c; color:#fff;",
+      "searchbar": "background-color:#222!important;",
+      "hairlines": "background-color:#222;",
+      "custom": [
+        {
+          "sega4ios": ".navbar:after, .subnavbar:after {background-color:#000;}"
+        }
+      ]
+    }
+  ]
+}

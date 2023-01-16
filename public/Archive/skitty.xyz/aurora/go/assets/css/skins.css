@@ -1,0 +1,468 @@
+/* AURORA SKINS CSS */
+/* Created by Skitty */
+
+#emulator {
+  color: #fff;
+}
+
+#sms-emulator canvas {
+  position: relative;
+  top: 10vw;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: calc(200vw / 3);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+#nes-emulator canvas, #gbc-emulator canvas {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  height: calc(100vw * 0.9);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.emu-controls .a, .emu-controls .b, .emu-controls .d-up, .emu-controls .d-down, .emu-controls .d-left, .emu-controls .d-right, .emu-controls .start, .emu-controls .select, .emu-controls .menu {
+  position: absolute;
+  z-index: 100;
+  color: #1d50e2;
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+  /*background-color: rgba(255,0,0,0.3);*/
+}
+
+.emu-controls .a, .emu-controls .b {
+  border-radius: 100%;
+}
+.emu-controls .start, .emu-controls .select, .emu-controls .menu {
+  border-radius: 10px;
+}
+.emu-controls .d-up, .emu-controls .d-down, .emu-controls .d-left, .emu-controls .d-right {
+  border-radius: 7px;
+}
+
+.emu-controls .bg {
+  position: absolute;
+  z-index:  1;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: calc(100vh - (100vw * 0.9));
+  top: calc(100vw * 0.9);
+  left: 0;
+  background-color: #1d50e2;
+  /*background-image: url(../img/skins/default.png);*/
+}
+
+.emu-controls .bar {
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 30px;
+  top: calc(100vw * 0.9);
+  left: 0;
+  background-color: #000;
+  border-bottom-left-radius: 30%;
+  border-bottom-right-radius: 30%;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* D-Pad Buttons */
+.emu-controls .d-up {
+  top: 110.625vw;
+  left: 17.1875vw;
+  width: 12.5vw;
+  height: 18.75vw;
+  background-color: #fff;
+}
+.emu-controls .d-down {
+  top: 129.375vw;
+  left: 17.1875vw;
+  width: 12.5vw;
+  height: 18.75vw;
+  background-color: #fff;
+}
+.emu-controls .d-down:before {
+  content: "";
+  display: block;
+  background-color: #fff;
+  width: 12.5vw;
+  height: 18.75vw;
+  margin-top: -12.5vw;
+  pointer-events: none;
+}
+.emu-controls .d-down:after {
+  content: "";
+  display: block;
+  background-color: #fff;
+  width: 23vw;
+  height: 12.5vw;
+  margin-top: -12.5vw;
+  margin-left: -5vw;
+  pointer-events: none;
+}
+.emu-controls .d-left {
+  top: 123.125vw;
+  left: 4.6875vw;
+  width: 18.75vw;
+  height: 12.5vw;
+  background-color: #fff;
+}
+.emu-controls .d-right {
+  top: 123.125vw;
+  left: 23.4375vw;
+  width: 18.75vw;
+  height: 12.5vw;
+  background-color: #fff;
+}
+
+/* A / B Buttons */
+.emu-controls .a {
+  top: 116.875vw;
+  right: 4.6875vw;
+  width: 18.75vw;
+  height: 18.75vw;
+  line-height: 18.75vw;
+  text-align: center;
+  font-size: 27px;
+  background-color: #fff;
+}
+.emu-controls .b {
+  top: 129.375vw;
+  right: 23.4375vw;
+  width: 18.75vw;
+  height: 18.75vw;
+  line-height: 18.75vw;
+  text-align: center;
+  font-size: 27px;
+  background-color: #fff;
+}
+
+/* Start / Select Buttons */
+.emu-controls .start {
+  top: 162vw;
+  right: 30vw;
+  width: 18.75vw;
+  height: 6.5vw;
+  line-height: 6.5vw;
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+}
+.emu-controls .select {
+  top: 162vw;
+  left: 30vw;
+  width: 18.75vw;
+  height: 6.5vw;
+  line-height: 6.5vw;
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+}
+.emu-controls .menu {
+  top: 162vw;
+  left: 3vw;
+  width: 18.75vw;
+  height: 6.5vw;
+  line-height: 6.5vw;
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+}
+
+/* Landscape Mode */
+@media (orientation: landscape) {
+  #nes-emulator canvas, #gbc-emulator canvas {
+    left: calc(50vw - (111vh / 2));
+    width: 111vh;
+    height: calc(100vh - 20px);
+  }
+  #sms-emulator canvas {
+    top: 0;
+    left: calc(50vw - (146vh / 2));
+    width: 146vh;
+    height: calc(100vh - 20px);
+  }
+  .emu-controls .bg, .emu-controls .bar, .statusbar {
+    display: none;
+  }
+  #emulator {
+    position: absolute;
+    z-index: 5;
+  }
+  .emu-controls {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 0.5;
+  }
+  /* D-Pad Buttons */
+  .emu-controls .d-up {
+    top: calc(50vh - 20px);
+    left: 17.81vh;
+    width: 12.5vh;
+    height: 18.75vh;
+  }
+  .emu-controls .d-down {
+    top: calc(68.75vh - 20px);
+    left: 17.81vh;
+    width: 12.5vh;
+    height: 18.75vh;
+  }
+  .emu-controls .d-down:before {
+    width: 12.5vh;
+    height: 18.75vh;
+    margin-top: -12.5vh;
+  }
+  .emu-controls .d-down:after {
+    width: 23vh;
+    height: 12.5vh;
+    margin-top: -12.5vh;
+    margin-left: -5vh;
+  }
+  .emu-controls .d-left {
+    top: calc(62.5vh - 20px);
+    left: 5.03vh;
+    width: 18.75vh;
+    height: 12.5vh;
+  }
+  .emu-controls .d-right {
+    top: calc(62.5vh - 20px);
+    left: 24.06vh;
+    width: 18.75vh;
+    height: 12.5vh;
+  }
+  /* A / B Buttons */
+  .emu-controls .a {
+    top: calc(53.91vh - 20px);
+    right: 5.03vh;
+    width: 18.75vh;
+    height: 18.75vh;
+    line-height: 18.75vh;
+  }
+  .emu-controls .b {
+    top: calc(66.41vh - 20px);
+    right: 24.06vh;
+    width: 18.75vh;
+    height: 18.75vh;
+    line-height: 18.75vh;
+  }
+  /* Start / Select Buttons */
+  .emu-controls .start {
+    top: calc(90.47vh - 20px);
+    right: 68.75vh;
+    width: 18.75vh;
+    height: 6.5vh;
+    line-height: 6.5vh;
+    font-size: 12px;
+  }
+  .emu-controls .select {
+    top: calc(90.47vh - 20px);
+    left: 68.75vh;
+    width: 18.75vh;
+    height: 6.5vh;
+    line-height: 6.5vh;
+    font-size: 12px;
+  }
+  .emu-controls .menu {
+    top: 0;
+    left: calc(50vw - 9.375vh);
+    width: 18.75vh;
+    height: 6.5vh;
+    line-height: 6.5vh;
+    font-size: 12px;
+  }
+}
+
+/* iPad (Portrait) */
+@media only screen and (min-device-height: 1024px) and (min-device-width: 768px) and (orientation: portrait) {
+  #nes-emulator canvas, #gbc-emulator canvas {
+    left: 10vw;
+    width: 80vw;
+    height: 72vw;
+  }
+  #sms-emulator canvas {
+    left: 0;
+    top: 5.6vw;
+    width: 100vw;
+    height: 66.536vw;
+  }
+  .emu-controls .bg {
+    height: calc(100vh - 72vw);
+    top: 72vw;
+  }
+  .emu-controls .bar {
+    top: 72vw;
+  }
+  /* D-Pad Buttons */
+  .emu-controls .d-up {
+    top: calc(94.8vw - 30px);
+    left: 12.5vw;
+    width: 7.8vw;
+    height: 11.72vw;
+  }
+  .emu-controls .d-down {
+    top: calc(106.52vw - 30px);
+    left: 12.5vw;
+    width: 7.8vw;
+    height: 11.72vw;
+  }
+  .emu-controls .d-down:before {
+    width: 7.8vw;
+    height: 11.7vw;
+    margin-top: -7.8vw;
+  }
+  .emu-controls .d-down:after {
+    width: 14.35vw;
+    height: 7.8vw;
+    margin-top: -7.8vw;
+    margin-left: -3.12vw;
+  }
+  .emu-controls .d-left {
+    top: calc(102.62vw - 30px);
+    left: 4.69vw;
+    width: 11.72vw;
+    height: 7.8vw;
+  }
+  .emu-controls .d-right {
+    top: calc(102.62vw - 30px);
+    left: 16.41vw;
+    width: 11.72vw;
+    height: 7.8vw;
+  }
+  /* A / B Buttons */
+  .emu-controls .a {
+    top: calc(96.74vw - 30px);
+    right: 4.69vw;
+    width: 11.72vw;
+    height: 11.72vw;
+    line-height: 11.72vw;
+  }
+  .emu-controls .b {
+    top: calc(104.56vw - 30px);
+    right: 16.41vw;
+    width: 11.72vw;
+    height: 11.72vw;
+    line-height: 11.72vw;
+  }
+  /* Start / Select Buttons */
+  .emu-controls .start {
+    top: calc(125.65vw - 30px);
+    right: 36.2vw;
+    width: 11.72vw;
+    height: 3.91vw;
+    line-height: 3.91vw;
+    font-size: 12px;
+  }
+  .emu-controls .select {
+    top: calc(125.65vw - 30px);
+    left: 36.2vw;
+    width: 11.72vw;
+    height: 3.91vw;
+    line-height: 3.91vw;
+    font-size: 12px;
+  }
+  .emu-controls .menu {
+    top: calc(85.42vw - 30px);
+    left: 44.14vw;
+    width: 11.72vw;
+    height: 3.91vw;
+    line-height: 3.91vw;
+    font-size: 12px;
+  }
+}
+
+/* iPad (Landscape) */
+@media only screen and (min-device-width: 768px) and (min-device-height: 1024px) and (orientation : landscape) {
+  /* D-Pad Buttons */
+  .emu-controls .d-up {
+    top: calc(58.85vh - 20px);
+    left: 12.5vh;
+    width: 7.8vh;
+    height: 11.72vh;
+  }
+  .emu-controls .d-down {
+    top: calc(70.57vh - 20px);
+    left: 12.5vh;
+    width: 7.8vh;
+    height: 11.72vh;
+  }
+  .emu-controls .d-down:before {
+    width: 7.8vh;
+    height: 11.72vh;
+    margin-top: -7.8vh;
+  }
+  .emu-controls .d-down:after {
+    width: 14.35vh;
+    height: 7.8vh;
+    margin-top: -7.8vh;
+    margin-left: -3.12vh;
+  }
+  .emu-controls .d-left {
+    top: calc(66.67vh - 20px);
+    left: 4.69vh;
+    width: 11.72vh;
+    height: 7.8vh;
+  }
+  .emu-controls .d-right {
+    top: calc(66.67vh - 20px);
+    left: 16.41vh;
+    width: 11.72vh;
+    height: 7.8vh;
+  }
+  /* A / B Buttons */
+  .emu-controls .a {
+    top: calc(60.81vh - 20px);
+    right: 4.69vh;
+    width: 11.72vh;
+    height: 11.72vh;
+    line-height: 11.72vh;
+  }
+  .emu-controls .b {
+    top: calc(68.62vh - 20px);
+    right: 16.41vh;
+    width: 11.72vh;
+    height: 11.72vh;
+    line-height: 11.72vh;
+  }
+  /* Start / Select Buttons */
+  .emu-controls .start {
+    top: calc(92.97vh - 20px);
+    right: 53.78vh;
+    width: 11.72vh;
+    height: 3.91vh;
+    line-height: 3.91vh;
+    font-size: 12px;
+  }
+  .emu-controls .select {
+    top: calc(92.97vh - 20px);
+    left: 53.78vh;
+    width: 11.72vh;
+    height: 3.91vh;
+    line-height: 3.91vh;
+    font-size: 12px;
+  }
+  .emu-controls .menu {
+    top: 0;
+    left: calc(50vw - 5.86vh);
+    width: 11.72vh;
+    height: 3.91vh;
+    line-height: 3.91vh;
+    font-size: 12px;
+  }
+}

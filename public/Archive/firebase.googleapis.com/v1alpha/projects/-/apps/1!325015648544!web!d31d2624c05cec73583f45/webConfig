@@ -1,0 +1,10 @@
+{
+  "projectId": "retro-games-257212",
+  "appId": "1:325015648544:web:d31d2624c05cec73583f45",
+  "databaseURL": "https://retro-games-257212.firebaseio.com",
+  "storageBucket": "retro-games-257212.appspot.com",
+  "locationId": "europe-west3",
+  "authDomain": "retro-games-257212.firebaseapp.com",
+  "messagingSenderId": "325015648544",
+  "measurementId": "G-KXEHGB0NC8"
+}
