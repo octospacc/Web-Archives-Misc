@@ -1092,7 +1092,7 @@ function isScreenLandscape() {
 
 
 
-//if (location.origin == 'https://ds.44670.org') {
+if (location.origin == 'https://ds.44670.org') {
     if (isSaveSupported) {
         // Register Service Worker
         if ('serviceWorker' in navigator) {
@@ -1129,7 +1129,7 @@ function isScreenLandscape() {
             }
         };
     })();
-//}
+}
 
 var vertShaderSource = `
     precision mediump float;
@@ -1786,15 +1786,5 @@ async function dpManualBtn(isUpload) {
         return
     }
 }
-
-window.fetch_fetch = window.fetch;
-window.fetch = function(e) {
-	console.log(e);
-	if (e.includes("//c.44670.org/m")) {
-		return fetch_fetch("build/m"); //("../c.44670.org/m"); //("data:text/plain;utf8,");
-	} else {
-		return fetch_fetch(e);
-	};
-};
 
 dpOnLoad()
