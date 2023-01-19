@@ -53,6 +53,15 @@ function $id(id) {
     return document.getElementById(id);
 }
 
+// https://stackoverflow.com/a/48178043
+function waitFor(condition, callback) {
+	if(!condition()) {
+		window.setTimeout(waitFor.bind(null, condition, callback), 100);
+	} else {
+		callback();
+	};
+};
+
 var optScaleMode = 0
 var uiCurrentMode = 'welcome'
 var plugins = {}
@@ -1748,8 +1757,7 @@ const LoadRomFromUrl = _ => {
 		Req.open('GET', RomUrl, true);
 		Req.responseType = 'blob';
 		Req.onload = function() {
-			while (!EngineIsReady) {};
-			tryLoadROM(Req.response);
+			waitFor(() => (EngineIsReady == true), () => tryLoadROM(Req.response));
 		};
 		Req.send();
 	};
