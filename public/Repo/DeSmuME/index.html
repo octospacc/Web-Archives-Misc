@@ -9,10 +9,10 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://ds.44670.org/icon.png">
     <link href="dark.css" rel="stylesheet">
-    <title>DS Player</title>
+    <title>DeSmuME-WASM Fork</title>
     <!-- Add hint for search engine -->
     <meta name="description"
-        content="DS Player is a web emulator for playing NDS and GBA games, designed for iOS(iPhone and iPad) and also workable for other devices.">
+        content="This is a personal fork of DeSmuME-WASM, a web emulator for playing NDS games, designed for iOS (iPhone and iPad) and also workable for other devices.">
     <meta name="keywords" content="NDS, GBA, iOS, iPhone, iPad, emulator, DS, Safari, online, PWA">
     <meta name="author" content="44670">
 </head>
@@ -126,33 +126,42 @@
         }
     </style>
     <div id="welcome" class="menu">
-        <h1>DS Player</h1>
+        <h1>DeSmuME-WASM Fork</h1>
         <div id="loading">Loading...</div>
         <div id="loadrom" hidden>
+        	<!--<input id="RomUrlBox" type="text" placeholder="Paste a ROM URL to load from that...">-->
             <input id="rom" type="file" hidden>
             <button style="width:calc(100% - 2em);margin: 1em;" id="btn-choose-file">Choose File (or
                 drag/drop)...</button><br>
         </div>
-        <p style="color: #888;">
+        <p style="color: #888; font-size: smaller;">
             Your files are processed locally and won't be uploaded to any server.<br>
             This software should not be used to play games you have not legally obtained.<br>
-            "Nintendo DS" is a trademark of Nintendo Co., Ltd. This site is not associated with Nintendo in any way.
+            This software is released under the GPL-2 license. Visit the original repo to read the terms.
+            <br>Changes in this fork from the original version are stated in the changelog.
+            <br>Modified parts of the source are "index.html" and "app.js" of this website, you can view their code directly.
+            <br>Compiled parts ("nds.js", "nds.wasm") are not modified and you can find their source on the original repo.
         </p>
         <hr>
         <p><span id="ver-info"></span><a onclick="whatsNew()" id="whats-new" href="index.html#">What's New</a>&nbsp;|&nbsp;<a
                 href="index.html#" onclick="uiSwitchTo('menu')">⚙ Settings...</a></p>
         <p id="p-sns">
-            <a href="https://ds.44670.org/gba/">GBA Player</a>
+            <a href="https://gba.44670.org">GBA Player</a>
         </p>
         <p>
-            <a href="https://github.com/44670/desmume-wasm">Help</a>&nbsp;|&nbsp;<a href="index.html#" id="a-gamepad">No
-                Gamepad</a>
+            <a href="https://github.com/44670/desmume-wasm">Help</a><!--&nbsp;|&nbsp;<a href="index.html#" id="a-gamepad">No
+                Gamepad--></a>
         </p>
         <p>
             Powered by <a
-                href="https://github.com/44670/desmume-wasm">desmume-wasm.</a>&nbsp;|&nbsp;https://ds.44670.org<br>
+                href="https://github.com/44670/desmume-wasm">desmume-wasm.</a>&nbsp;|&nbsp;OctoSpacc Fork <span style="font-size: smaller;">(Click on "What's New" for more information - DO NOT report issues with this fork to the original developer!)</span><br>
         </p>
-
+        <!--
+                <p>
+            Powered by <a
+                href="https://github.com/octospacc/DeSmuME-WASM">DeSmuME-WASM - OctoSpacc Fork</a> (GPLv2)--&nbsp;|&nbsp;OctoSpacc fork--<br>
+        </p>
+-->
 
         <div id="pro" style="background-color: #333">
         </div>
@@ -195,7 +204,7 @@
     <div id="menu" hidden>
         <button onclick="uiMenuBack()">❮ Back</button>
         <hr>
-        <div id="cfg-ea" hidden>
+        <div id="cfg-ea">
             <b>Early Access features</b><br>
 Please note that these features are experimental and may not be stable.<br>
             <input type="checkbox" id="cfg-turbo">

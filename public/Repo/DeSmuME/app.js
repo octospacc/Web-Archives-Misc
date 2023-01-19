@@ -1,5 +1,20 @@
-var VER = 'v20230106'
+var VER = 'v2023-01-19'
 
+const whatsNew = _ => {
+	alert(`\
+{{ DeSmuME-WASM - OctoSpacc Fork }}
+< Changelog >
+
+[ 2023-01-19 ]
+- Add this changelog and copyright notice
+- Fix URL loading happening prematurely
+- Change notices and visible options in the HTML
+
+[ 2023-01-18 ]
+- Add support for loading ROMs from URL
+`)};
+
+var EngineIsReady = false;
 var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 var isMacOS = !!navigator.platform && /Mac/.test(navigator.platform);
 if (isMacOS) {
@@ -197,7 +212,6 @@ async function uiSaveRestore() {
     })
 }
 var gameID = ''
-
 var emuKeyState = new Array(14)
 const emuKeyNames = ["right", "left", "down", "up", "select", "start", "b", "a", "y", "x", "l", "r", "debug", "lid"]
 var vkMap = {}
@@ -209,20 +223,16 @@ for (var i = 0; i < emuKeyNames.length; i++) {
     keyNameToKeyId[emuKeyNames[i]] = i
 }
 var isLandscape = false
-
 const emuKeyboardMapping = [39, 37, 40, 38, 16, 13, 90, 88, 65, 83, 81, 87, -1, 8]
-
 var emuIsRunning = false
 var emuIsGameLoaded = false
 var fps = 0
 var divFPS = $id('fps')
 var fileInput = $id('rom')
 var romSize = 0
-
 var FB = [0, 0]
 var screenCanvas = [document.getElementById('top'), document.getElementById('bottom')]
 var ctx2d;
-
 var audioContext
 var audioBuffer
 var scriptNode
@@ -231,8 +241,6 @@ var audioFifoL = new Int16Array(audioFifoCap)
 var audioFifoR = new Int16Array(audioFifoCap)
 var audioFifoHead = 0
 var audioFifoLen = 0
-
-
 var frameCount = 0
 var prevCalcFPSTime = 0
 var touched = 0
@@ -241,7 +249,6 @@ var touchY = 0
 var prevSaveFlag = 0
 var lastTwoFrameTime = 10
 var fbSize
-
 
 function callPlugin(type, arg) {
     for (var k in plugins) {
@@ -299,10 +306,8 @@ function emuRunFrame() {
         Module._runFrame(0, keyMask, touched, touchX, touchY)
         emuRunAudio()
     }
-
     Module._runFrame(1, keyMask, touched, touchX, touchY)
     emuRunAudio()
-
     if (optScaleMode < 2) {
         ctx2d[0].putImageData(FB[0], 0, 0)
         ctx2d[1].putImageData(FB[1], 0, 0)
@@ -310,8 +315,6 @@ function emuRunFrame() {
         gpuDraw(screenCanvas[0], FB[0])
         gpuDraw(screenCanvas[1], FB[1])
     }
-
-
     frameCount += 1
     if (frameCount % 120 == 0) {
         var time = performance.now()
@@ -323,7 +326,6 @@ function emuRunFrame() {
         checkSaveGame()
     }
 }
-
 
 function wasmReady() {
     Module._setSampleRate(47856)
@@ -347,6 +349,7 @@ function wasmReady() {
     } else {
         gpuInit()
     }
+    EngineIsReady = true;
 }
 
 function emuCopySavBuffer() {
@@ -481,7 +484,6 @@ function makeVKStyle(top, left, w, h, fontSize) {
     return 'top:' + top + 'px;left:' + left + 'px;width:' + w + 'px;height:' + h + 'px;' + 'font-size:' + fontSize + 'px;line-height:' + h + 'px;'
 }
 
-
 function uiAdjustVKLayout() {
     var baseSize = Math.min(window.innerWidth, window.innerHeight) * 0.14 * config.vkScale
     var fontSize = baseSize * 0.7
@@ -491,7 +493,6 @@ function uiAdjustVKLayout() {
     var abxyHeight = baseSize * 3
     var vkw = baseSize
     var vkh = baseSize
-
     vkw = baseSize * 1.5
     vkh = baseSize * 0.6
     fontSize = baseSize * 0.5
@@ -500,8 +501,6 @@ function uiAdjustVKLayout() {
     vkw = baseSize * 0.4
     vkh = baseSize * 0.4
     $id('vk-menu').style = makeVKStyle(offTop, window.innerWidth / 2 - vkw / 2, vkw, vkh, fontSize)
-
-
     offTop += baseSize * 0.62
     vkw = baseSize
     vkh = baseSize
@@ -510,13 +509,11 @@ function uiAdjustVKLayout() {
     vkMap['b'].style = makeVKStyle(offTop + abxyHeight - vkh, offLeft + abxyWidth / 2 - vkw / 2, vkw, vkh, fontSize)
     vkMap['x'].style = makeVKStyle(offTop, offLeft + abxyWidth / 2 - vkw / 2, vkw, vkh, fontSize)
     vkMap['y'].style = makeVKStyle(offTop + abxyHeight / 2 - vkh / 2, offLeft, vkw, vkh, fontSize)
-
     vkw = baseSize * 1.0
     vkh = baseSize * 1.0
     offLeft = 0
     $id('vk-stick').style = config.useDPad ? 'display:none;' : makeVKStyle(offTop + abxyHeight / 2 - vkh / 2, offLeft + abxyHeight / 2 - vkw / 2, vkw, vkh, fontSize)
     vkStickPos = [offTop + abxyHeight / 2, offLeft + abxyHeight / 2, vkw, vkh, fontSize]
-
     var dpadW = abxyWidth
     var dpadH = abxyHeight
     var dpadX = offLeft
@@ -553,7 +550,6 @@ function setScreenPos(c, left, top, w, h) {
         c.height = h * devicePixelRatio
     }
 }
-
 
 function uiUpdateLayout() {
     isLandscape = isScreenLandscape()
@@ -597,10 +593,8 @@ function uiUpdateLayout() {
         }
 
     }
-
     uiAdjustVKLayout()
 }
-
 
 function uiSwitchTo(mode) {
     if (mode == uiCurrentMode) {
@@ -614,7 +608,6 @@ function uiSwitchTo(mode) {
     body.style = ''
     html.style = ''
     emuIsRunning = false
-
     if (mode == 'player') {
         body.style = 'touch-action: none;'
         html.style = 'position: fixed;overflow:hidden;touch-action: none;'
@@ -709,7 +702,6 @@ function tryInitSound() {
 
 function emuLoop() {
     window.requestAnimationFrame(emuLoop)
-
     if (emuIsRunning && (!emuUseTimer33)) {
         prevRunFrameTime = performance.now()
         emuRunFrame()
@@ -753,32 +745,25 @@ function handleTouch(event) {
     }
     event.preventDefault();
     event.stopPropagation();
-
     var isDown = false
     var x = 0
     var y = 0
-
     var needUpdateStick = false
     var stickY = vkStickPos[0]
     var stickX = vkStickPos[1]
     var stickW = vkStickPos[2]
     var stickH = vkStickPos[3]
-
     var stickPressed = false
     var stickDeadZone = stickW * 0.2
-
     var nextStickTouchID = null
     var nextTpadTouchID = null
-
     var tsRect = screenCanvas[1].getBoundingClientRect()
-
     for (var i = 0; i < emuKeyState.length; i++) {
         emuKeyState[i] = false
     }
     for (var k in vkState) {
         vkState[k][1] = 0
     }
-
     for (var i = 0; i < event.touches.length; i++) {
         var t = event.touches[i];
         var tid = t.identifier
@@ -805,7 +790,6 @@ function handleTouch(event) {
         } else {
             if ((tid === stickTouchID) || ((dom == vkMap['stick']) && (tid != tpadTouchID))) {
                 stickPressed = true
-
                 vkState['stick'][1] = 1
                 var sx = t.clientX
                 var sy = t.clientY
@@ -844,11 +828,9 @@ function handleTouch(event) {
             continue
         }
     }
-
     touched = isDown ? 1 : 0;
     touchX = x
     touchY = y
-
     for (var k in vkState) {
         if (vkState[k][0] != vkState[k][1]) {
             var dom = vkMap[k]
@@ -867,7 +849,6 @@ function handleTouch(event) {
 
         }
     }
-
     for (var i = 0; i < emuKeyState.length; i++) {
         var k = emuKeyNames[i]
         if (vkState[k]) {
@@ -876,20 +857,15 @@ function handleTouch(event) {
             }
         }
     }
-
     if (needUpdateStick) {
         vkMap['stick'].style = makeVKStyle(stickY - stickW / 2, stickX - stickW / 2, stickW, stickH, vkStickPos[4])
     }
-
     stickTouchID = nextStickTouchID
     tpadTouchID = nextTpadTouchID
 }
 ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'touchenter', 'touchleave'].forEach((val) => {
     window.addEventListener(val, handleTouch)
 })
-
-
-
 
 window.onmousedown = window.onmouseup = window.onmousemove = (e) => {
     if (!emuIsRunning) {
@@ -981,7 +957,6 @@ if (isSaveSupported) {
     });
 }
 
-
 function processGamepadInput() {
     var padMap = gamePadKeyMap
     if (config.swapABXY) {
@@ -1022,8 +997,6 @@ function processGamepadInput() {
         emuKeyState[keyNameToKeyId['down']] = true
     }
 }
-
-
 
 var isMicrophoneEnabled = false
 var micPtr
@@ -1080,15 +1053,12 @@ function enableMicrophone() {
                 }
             }
             micScriptNode.connect(audioContext.destination);
-
         });
 }
 
 function isScreenLandscape() {
     return (window.innerWidth / window.innerHeight) > 1.2
 }
-
-
 
 if (location.origin == 'https://ds.44670.org') {
     if (isSaveSupported) {
@@ -1110,7 +1080,6 @@ if (location.origin == 'https://ds.44670.org') {
         }
     }
     (function () {
-
         var cnt = 0;
         // Prompt to install PWA
         window.onbeforeinstallprompt = function (e) {
@@ -1497,14 +1466,12 @@ function gpuDraw(canvas, idata) {
     gl.drawArrays(gl.TRIANGLES, 0, 6);
 }
 
-
 function gpuInit() {
     if (!gpuInitWithCanvas(screenCanvas[0])) {
         return
     }
     gpuInitWithCanvas(screenCanvas[1]);
 }
-
 
 var DP_BASE_PATH = "/dssav"
 var DP_EXT = ".4dsaz"
@@ -1518,8 +1485,6 @@ function dpGetCurrentDayInt() {
     var retInt = year * 10000 + month * 100 + day;
     return retInt;
 }
-
-
 
 function dpIsConnected() {
     return localStorage['d-token'] ? true : false
@@ -1536,14 +1501,12 @@ async function dpIDHash(gameID) {
     return digestHex.substring(0, 8)
 }
 
-
 async function dpGameLoaded() {
     if (dpIsConnected()) {
         var hash = await dpIDHash(gameID)
         $id('span-cloud-id').innerText = hash
     }
 }
-
 
 async function dpConnect() {
     var redirectUri = encodeURIComponent(location.origin)
@@ -1705,9 +1668,6 @@ async function dpTryUploadCloudSave(gameID, tag, u8Arr, mode) {
     return false
 }
 
-
-
-
 async function dpTryAutoBackup() {
     if (!dpIsConnected()) {
         return false
@@ -1724,9 +1684,6 @@ async function dpTryAutoBackup() {
     return false
 }
 
-
-
-
 function dpOnConnectButtonClicked() {
     if (dpIsConnected()) {
         if (confirm("Are you sure to disconnect from Dropbox?")) {
@@ -1742,7 +1699,6 @@ function dpOnConnectButtonClicked() {
 }
 
 async function dpManualBtn(isUpload) {
-
     if (!dpIsConnected()) {
         alert("Please connect to Dropbox first.")
         return
@@ -1792,11 +1748,25 @@ const LoadRomFromUrl = _ => {
 		Req.open('GET', RomUrl, true);
 		Req.responseType = 'blob';
 		Req.onload = function() {
+			while (!EngineIsReady) {};
 			tryLoadROM(Req.response);
 		};
 		Req.send();
 	};
 };
+
+/*
+const RomUrlBoxChange = _ => {
+	if (RomUrlBox.value) {
+		$id('btn-choose-file').innerHTML = 'Load from URL!';
+	} else {
+		$id('btn-choose-file').innerHTML = 'Choose File (or drag/drop)...';
+	};
+};
+['onchange', 'oninput', 'onpaste'].forEach(function (i) {
+	RomUrlBox[i] = RomUrlBoxChange;
+});
+*/
 
 dpOnLoad();
 LoadRomFromUrl();
