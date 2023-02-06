@@ -111,7 +111,6 @@ function loadConfig() {
 }
 loadConfig()
 
-
 function uiSaveConfig() {
     config.powerSave = !!($id('power-save').checked)
     config.vkEnabled = !!($id('vk-enabled').checked)
@@ -126,16 +125,10 @@ function uiSaveConfig() {
     afterConfigUpdated()
 }
 
-
 function uiMenuBack() {
     tryInitSound()
     uiSaveConfig()
-
-    if (emuIsGameLoaded) {
-        uiSwitchTo('player')
-    } else {
-        uiSwitchTo('welcome')
-    }
+    emuIsGameLoaded ? uiSwitchTo('player') : uiSwitchTo('welcome');
 }
 
 function toyEncrypt(src) {
